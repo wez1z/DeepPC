@@ -110,6 +110,21 @@ export default function Home() {
     setIsSpecsModalOpen(true);
   };
 
+  useEffect(() => {
+    const handleToggle = () => setIsOrderModalOpen(prev => !prev);
+    const handleShowSpecs = (e: CustomEvent<string>) => {
+      handleSpecsClick(e.detail);
+    };
+    
+    document.addEventListener('showSpecs', handleShowSpecs as EventListener);
+    document.addEventListener('orderConfig', handleToggle);
+    
+    return () => {
+      document.removeEventListener('showSpecs', handleShowSpecs as EventListener);
+      document.removeEventListener('orderConfig', handleToggle);
+    };
+  }, []);
+
   const handleOrderSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success('Заказ успешно отправлен! Мы свяжемся с вами в ближайшее время.');
@@ -423,21 +438,15 @@ export default function Home() {
 
       {/* Specs Modal */}
       {isSpecsModalOpen && currentConfig && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" 
-             style={{ overflow: 'hidden' }}
-             onClick={(e) => {
-               if (e.target === e.currentTarget) {
-                 setIsSpecsModalOpen(false);
-               }
-             }}>
-          <div className="bg-black rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto flex flex-col p-8 shadow-xl border border-[#00ff00]">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-black rounded-xl max-w-4xl w-full p-8 shadow-xl border border-[#00ff00]">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-semibold neon-text">
-                {typedFullSpecs[currentConfig].title} - Характеристики
+              <h3 className="text-2xl font-semibold text-[#00ff00]">
+                {typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].title} - Характеристики
               </h3>
               <button
                 onClick={() => setIsSpecsModalOpen(false)}
-                className="text-[#00ff00] hover:text-[#00ff00]/70 transition-colors"
+                className="text-[#00ff00] hover:text-[#00cc00] transition-colors"
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
@@ -451,37 +460,37 @@ export default function Home() {
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Процессор:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.cpu}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.cpu}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Видеокарта:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.gpu}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.gpu}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Память:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.ram}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.ram}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Накопитель:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.storage}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.storage}</span>
                     </div>
                   </div>
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Материнская плата:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.motherboard}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.motherboard}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Охлаждение:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.cooling}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.cooling}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Блок питания:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.psu}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.psu}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-[#00ff00]">Корпус:</span>
-                      <span className="text-white">{typedFullSpecs[currentConfig].specs.case}</span>
+                      <span className="text-white">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].specs.case}</span>
                     </div>
                   </div>
                 </div>
@@ -491,14 +500,15 @@ export default function Home() {
               <div>
                 <h4 className="text-xl font-semibold text-[#00ff00] mb-4">Производительность в играх</h4>
                 <div className="grid grid-cols-1 gap-4">
-                  {typedFullSpecs[currentConfig].performance.map((perf, index) => (
+                  {typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].performance.map((perf, index) => (
                     <div key={index} className="border border-[#00ff00]/20 rounded p-3 hover:border-[#00ff00] transition-colors">
                       <div className="flex justify-between items-center">
                         <span className="text-[#00ff00] font-bold">{perf.game}</span>
-                        <span className="text-white bg-[#00ff00]/10 px-3 py-1 rounded">{perf.fps} FPS</span>
-                      </div>
-                      <div className="text-[#00ff00]/80 text-sm mt-1">
-                        {perf.settings} • {perf.resolution}
+                        <div className="flex items-center gap-4">
+                          <span className="text-white">{perf.settings}</span>
+                          <span className="text-white">{perf.resolution}</span>
+                          <span className="text-white bg-[#00ff00]/10 px-3 py-1 rounded">{perf.fps} FPS</span>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -509,9 +519,9 @@ export default function Home() {
               <div className="border-t border-[#00ff00]/20 pt-4">
                 <div className="flex justify-between items-center">
                   <div>
-                    <span className="text-[#00ff00] text-2xl font-bold">{typedFullSpecs[currentConfig].price} BYN</span>
-                    {typedFullSpecs[currentConfig].oldPrice && (
-                      <span className="text-[#00ff00]/50 line-through ml-2">{typedFullSpecs[currentConfig].oldPrice} BYN</span>
+                    <span className="text-[#00ff00] text-2xl font-bold">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].price} BYN</span>
+                    {typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].oldPrice && (
+                      <span className="text-[#00ff00]/50 line-through ml-2">{typedFullSpecs[currentConfig as keyof typeof typedFullSpecs].oldPrice} BYN</span>
                     )}
                   </div>
                   <button 
@@ -527,7 +537,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-    </div>
+        </div>
       )}
 
       <ToastContainer position="top-right" />
