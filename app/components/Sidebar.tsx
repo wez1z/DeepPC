@@ -36,18 +36,21 @@ export default function Sidebar({ onConfigChange }: SidebarProps) {
   const components = {
     cpu: {
       amd: [
-        { id: 'r5-5600', name: 'AMD Ryzen 5 5600', socket: 'AM4', price: 449 },
-        { id: 'r5-5600x', name: 'AMD Ryzen 5 5600X', socket: 'AM4', price: 549 },
-        { id: 'r7-5700x', name: 'AMD Ryzen 7 5700X', socket: 'AM4', price: 749 },
-        { id: 'r7-5800x3d', name: 'AMD Ryzen 7 5800X3D', socket: 'AM4', price: 999 },
+        { id: 'r5-5600', name: 'AMD Ryzen 5 5600', socket: 'AM4', price: 349 },
+        { id: 'r5-5600x', name: 'AMD Ryzen 5 5600X', socket: 'AM4', price: 399 },
+        { id: 'r7-5700x', name: 'AMD Ryzen 7 5700X', socket: 'AM4', price: 499 },
+        { id: 'r7-5800x', name: 'AMD Ryzen 7 5800X', socket: 'AM4', price: 599 },
+        { id: 'r7-5800x3d', name: 'AMD Ryzen 7 5800X3D', socket: 'AM4', price: 799 },
+        { id: 'r9-5900x', name: 'AMD Ryzen 9 5900X', socket: 'AM4', price: 899 },
         { id: 'r9-5950x', name: 'AMD Ryzen 9 5950X', socket: 'AM4', price: 1299 },
-        { id: 'r5-7600', name: 'AMD Ryzen 5 7600', socket: 'AM5', price: 899 },
-        { id: 'r5-7600x', name: 'AMD Ryzen 5 7600X', socket: 'AM5', price: 999 },
-        { id: 'r7-7700x', name: 'AMD Ryzen 7 7700X', socket: 'AM5', price: 1299 },
-        { id: 'r7-7800x3d', name: 'AMD Ryzen 7 7800X3D', socket: 'AM5', price: 1699 },
-        { id: 'r9-7900x', name: 'AMD Ryzen 9 7900X', socket: 'AM5', price: 1899 },
-        { id: 'r9-7950x', name: 'AMD Ryzen 9 7950X', socket: 'AM5', price: 2499 },
-        { id: 'r9-7950x3d', name: 'AMD Ryzen 9 7950X3D', socket: 'AM5', price: 2799 }
+        { id: 'r5-7600', name: 'AMD Ryzen 5 7600', socket: 'AM5', price: 699 },
+        { id: 'r5-7600x', name: 'AMD Ryzen 5 7600X', socket: 'AM5', price: 749 },
+        { id: 'r7-7700', name: 'AMD Ryzen 7 7700', socket: 'AM5', price: 899 },
+        { id: 'r7-7700x', name: 'AMD Ryzen 7 7700X', socket: 'AM5', price: 999 },
+        { id: 'r7-7800x3d', name: 'AMD Ryzen 7 7800X3D', socket: 'AM5', price: 1299 },
+        { id: 'r9-7900', name: 'AMD Ryzen 9 7900', socket: 'AM5', price: 1499 },
+        { id: 'r9-7900x', name: 'AMD Ryzen 9 7900X', socket: 'AM5', price: 1699 },
+        { id: 'r9-7950x', name: 'AMD Ryzen 9 7950X', socket: 'AM5', price: 1999 }
       ],
       intel: [
         { id: 'i3-12100f', name: 'Intel Core i3-12100F', socket: 'LGA1700', price: 349 },
@@ -65,26 +68,44 @@ export default function Sidebar({ onConfigChange }: SidebarProps) {
       ]
     },
     gpu: [
-      { id: 'rtx3060-gaming', name: 'MSI RTX 3060 GAMING X 12GB', power: 170, price: 999 },
-      { id: 'rtx3060ti-gaming', name: 'MSI RTX 3060 Ti GAMING X 8GB', power: 200, price: 1199 },
-      { id: 'rtx3070-gaming', name: 'MSI RTX 3070 GAMING X TRIO 8GB', power: 220, price: 1499 },
-      { id: 'rtx3070ti-gaming', name: 'MSI RTX 3070 Ti GAMING X TRIO 8GB', power: 290, price: 1699 },
-      { id: 'rtx3080-gaming', name: 'MSI RTX 3080 GAMING X TRIO 10GB', power: 320, price: 1999 },
-      { id: 'rtx4060-gaming', name: 'MSI RTX 4060 GAMING X 8GB', power: 115, price: 1199 },
-      { id: 'rtx4060-aorus', name: 'GIGABYTE RTX 4060 AORUS ELITE 8GB', power: 115, price: 1299 },
-      { id: 'rtx4060ti-gaming', name: 'MSI RTX 4060 Ti GAMING X 8GB', power: 160, price: 1499 },
-      { id: 'rtx4060ti-aorus', name: 'GIGABYTE RTX 4060 Ti AORUS ELITE 8GB', power: 160, price: 1599 },
-      { id: 'rtx4070-gaming', name: 'MSI RTX 4070 GAMING X TRIO 12GB', power: 200, price: 2299 },
-      { id: 'rtx4070-aorus', name: 'GIGABYTE RTX 4070 AORUS MASTER 12GB', power: 200, price: 2399 },
-      { id: 'rtx4070ti-gaming', name: 'MSI RTX 4070 Ti GAMING X TRIO 12GB', power: 285, price: 2799 },
-      { id: 'rtx4070ti-aorus', name: 'GIGABYTE RTX 4070 Ti AORUS MASTER 12GB', power: 285, price: 2899 },
-      { id: 'rtx4080-gaming', name: 'MSI RTX 4080 GAMING X TRIO 16GB', power: 320, price: 3499 },
-      { id: 'rtx4080-aorus', name: 'GIGABYTE RTX 4080 AORUS MASTER 16GB', power: 320, price: 3599 },
-      { id: 'rtx4090-gaming', name: 'MSI RTX 4090 GAMING X TRIO 24GB', power: 450, price: 4999 },
-      { id: 'rtx4090-aorus', name: 'GIGABYTE RTX 4090 AORUS MASTER 24GB', power: 450, price: 5199 }
+      { id: 'rx-6600', name: 'AMD Radeon RX 6600 8GB', power: 132, price: 799 },
+      { id: 'rx-6600xt', name: 'AMD Radeon RX 6600 XT 8GB', power: 160, price: 999 },
+      { id: 'rx-6650xt', name: 'AMD Radeon RX 6650 XT 8GB', power: 180, price: 1199 },
+      { id: 'rx-6700xt', name: 'AMD Radeon RX 6700 XT 12GB', power: 230, price: 1499 },
+      { id: 'rx-6750xt', name: 'AMD Radeon RX 6750 XT 12GB', power: 250, price: 1699 },
+      { id: 'rx-6800', name: 'AMD Radeon RX 6800 16GB', power: 250, price: 1999 },
+      { id: 'rx-6800xt', name: 'AMD Radeon RX 6800 XT 16GB', power: 300, price: 2299 },
+      { id: 'rx-6900xt', name: 'AMD Radeon RX 6900 XT 16GB', power: 300, price: 2499 },
+      { id: 'rx-6950xt', name: 'AMD Radeon RX 6950 XT 16GB', power: 335, price: 2799 },
+      { id: 'rx-7600', name: 'AMD Radeon RX 7600 8GB', power: 165, price: 999 },
+      { id: 'rx-7600xt', name: 'AMD Radeon RX 7600 XT 16GB', power: 190, price: 1299 },
+      { id: 'rx-7700xt', name: 'AMD Radeon RX 7700 XT 12GB', power: 245, price: 1699 },
+      { id: 'rx-7800xt', name: 'AMD Radeon RX 7800 XT 16GB', power: 263, price: 1999 },
+      { id: 'rx-7900xt', name: 'AMD Radeon RX 7900 XT 20GB', power: 315, price: 2799 },
+      { id: 'rx-7900xtx', name: 'AMD Radeon RX 7900 XTX 24GB', power: 355, price: 3299 },
+      { id: 'rtx-2060', name: 'NVIDIA GeForce RTX 2060 6GB', power: 160, price: 799 },
+      { id: 'rtx-2060s', name: 'NVIDIA GeForce RTX 2060 SUPER 8GB', power: 175, price: 999 },
+      { id: 'rtx-2070s', name: 'NVIDIA GeForce RTX 2070 SUPER 8GB', power: 215, price: 1299 },
+      { id: 'rtx-2080s', name: 'NVIDIA GeForce RTX 2080 SUPER 8GB', power: 250, price: 1499 },
+      { id: 'rtx-2080ti', name: 'NVIDIA GeForce RTX 2080 Ti 11GB', power: 250, price: 1699 },
+      { id: 'rtx-3060', name: 'NVIDIA GeForce RTX 3060 12GB', power: 170, price: 999 },
+      { id: 'rtx-3060ti', name: 'NVIDIA GeForce RTX 3060 Ti 8GB', power: 200, price: 1199 },
+      { id: 'rtx-3070', name: 'NVIDIA GeForce RTX 3070 8GB', power: 220, price: 1499 },
+      { id: 'rtx-3070ti', name: 'NVIDIA GeForce RTX 3070 Ti 8GB', power: 290, price: 1699 },
+      { id: 'rtx-3080', name: 'NVIDIA GeForce RTX 3080 10GB', power: 320, price: 1999 },
+      { id: 'rtx-3080ti', name: 'NVIDIA GeForce RTX 3080 Ti 12GB', power: 350, price: 2299 },
+      { id: 'rtx-3090', name: 'NVIDIA GeForce RTX 3090 24GB', power: 350, price: 2499 },
+      { id: 'rtx-3090ti', name: 'NVIDIA GeForce RTX 3090 Ti 24GB', power: 450, price: 2799 },
+      { id: 'rtx-4060', name: 'NVIDIA GeForce RTX 4060 8GB', power: 115, price: 1199 },
+      { id: 'rtx-4060ti', name: 'NVIDIA GeForce RTX 4060 Ti 8GB', power: 160, price: 1499 },
+      { id: 'rtx-4070', name: 'NVIDIA GeForce RTX 4070 12GB', power: 200, price: 2299 },
+      { id: 'rtx-4070ti', name: 'NVIDIA GeForce RTX 4070 Ti 12GB', power: 285, price: 2799 },
+      { id: 'rtx-4080', name: 'NVIDIA GeForce RTX 4080 16GB', power: 320, price: 3499 },
+      { id: 'rtx-4090', name: 'NVIDIA GeForce RTX 4090 24GB', power: 450, price: 4999 }
     ],
     motherboard: {
       am4: [
+        { id: 'b450m-pro', name: 'MSI B450M PRO-VDH MAX', price: 199 },
         { id: 'b550m-pro', name: 'MSI B550M PRO-VDH WIFI', price: 299 },
         { id: 'b550-gaming', name: 'MSI B550 GAMING PLUS', price: 399 },
         { id: 'b550-aorus', name: 'GIGABYTE B550 AORUS PRO', price: 499 },
@@ -117,13 +138,37 @@ export default function Sidebar({ onConfigChange }: SidebarProps) {
     ram: {
       ddr4: [
         { id: 'ddr4-3200-16', name: '16GB DDR4 3200MHz', price: 159 },
-        { id: 'ddr4-3600-32', name: '32GB DDR4 3600MHz', price: 319 }
+        { id: 'ddr4-3600-32', name: '32GB DDR4 3600MHz', price: 319 },
+        { id: 'ddr4-4000-32', name: '32GB DDR4 4000MHz', price: 399 }
       ],
       ddr5: [
         { id: 'ddr5-5600-32', name: '32GB DDR5 5600MHz', price: 599 },
-        { id: 'ddr5-6000-32', name: '32GB DDR5 6000MHz', price: 799 }
+        { id: 'ddr5-6000-32', name: '32GB DDR5 6000MHz', price: 799 },
+        { id: 'ddr5-6400-32', name: '32GB DDR5 6400MHz', price: 999 },
+        { id: 'ddr5-6800-32', name: '32GB DDR5 6800MHz', price: 1199 },
+        { id: 'ddr5-7200-32', name: '32GB DDR5 7200MHz', price: 1399 },
+        { id: 'ddr5-7600-32', name: '32GB DDR5 7600MHz', price: 1599 },
+        { id: 'ddr5-8000-32', name: '32GB DDR5 8000MHz', price: 1799 }
       ]
     },
+    storage: [
+      { id: 'ssd-256', name: '256GB NVMe SSD', price: 99 },
+      { id: 'ssd-512', name: '512GB NVMe SSD', price: 159 },
+      { id: 'ssd-1tb', name: '1TB NVMe SSD', price: 299 },
+      { id: 'ssd-2tb', name: '2TB NVMe SSD', price: 599 },
+      { id: 'ssd-4tb', name: '4TB NVMe SSD', price: 1199 },
+      { id: 'hdd-1tb', name: '1TB HDD', price: 79 },
+      { id: 'hdd-2tb', name: '2TB HDD', price: 129 },
+      { id: 'hdd-4tb', name: '4TB HDD', price: 199 }
+    ],
+    cooling: [
+      { id: 'ak400', name: 'DeepCool AK400', price: 49 },
+      { id: 'ak620', name: 'DeepCool AK620', price: 99 },
+      { id: 'ak620-digital', name: 'DeepCool AK620 Digital', price: 149 },
+      { id: 'lf2-240', name: 'ARCTIC Liquid Freezer II 240', price: 199 },
+      { id: 'lf2-360', name: 'ARCTIC Liquid Freezer II 360', price: 299 },
+      { id: 'lf2-420', name: 'ARCTIC Liquid Freezer II 420', price: 399 }
+    ],
     case: [
       { id: 'cc560', name: 'DeepCool CC560', price: 199 },
       { id: 'lancool205', name: 'Lian Li LANCOOL 205 Mesh', price: 249 },
@@ -134,9 +179,11 @@ export default function Sidebar({ onConfigChange }: SidebarProps) {
       { id: '5000d', name: 'Corsair 5000D Airflow', price: 449 },
       { id: 'torrent', name: 'Fractal Design Torrent', price: 499 },
       { id: 'o11air', name: 'Lian Li O11 Air Mini', price: 399 },
-      { id: 'o11dynamic', name: 'Lian Li O11 Dynamic EVO', price: 599 }
+      { id: 'o11dynamic', name: 'Lian Li O11 Dynamic EVO', price: 599 },
+      { id: 'o11xl', name: 'Lian Li O11 Dynamic EVO XL', price: 799 }
     ],
     psu: [
+      { id: 'cv550', name: 'Corsair CV550', power: 550, price: 299 },
       { id: 'rm650', name: 'Corsair RM650', power: 650, price: 299 },
       { id: 'rm750', name: 'Corsair RM750', power: 750, price: 349 },
       { id: 'rm850', name: 'Corsair RM850', power: 850, price: 399 },

@@ -47,10 +47,80 @@ export interface PSUSpecs extends ComponentSpecs {
 }
 
 export const configs = {
-  'rtx-3050-basic': {
-    title: 'RTX 3050 Basic',
+  'rx-6600-basic': {
+    title: 'RX 6600 Basic',
+    price: 1999,
+    oldPrice: 2199,
+    specs: {
+      cpu: 'AMD Ryzen 5 5600',
+      gpu: 'AMD Radeon RX 6600 8GB',
+      ram: '16GB DDR4-3200',
+      storage: '512GB NVMe SSD',
+      motherboard: 'MSI B550M PRO-VDH WIFI',
+      cooling: 'DeepCool AK400',
+      psu: 'Corsair CV550',
+      case: 'DeepCool CC560'
+    },
+    performance: [
+      {
+        game: 'Cyberpunk 2077',
+        fps: '50-60',
+        settings: 'High',
+        resolution: '1080p'
+      },
+      {
+        game: 'Red Dead Redemption 2',
+        fps: '60-70',
+        settings: 'High',
+        resolution: '1080p'
+      },
+      {
+        game: 'Elden Ring',
+        fps: '70-80',
+        settings: 'High',
+        resolution: '1080p'
+      }
+    ]
+  },
+  'rtx-2060-basic': {
+    title: 'RTX 2060 Basic',
     price: 1799,
     oldPrice: 1999,
+    specs: {
+      cpu: 'Intel Core i3-12100F',
+      gpu: 'NVIDIA GeForce RTX 2060 6GB',
+      ram: '16GB DDR4-3200',
+      storage: '512GB NVMe SSD',
+      motherboard: 'MSI B660M PRO-A',
+      cooling: 'DeepCool AK400',
+      psu: 'Corsair CV550',
+      case: 'DeepCool CC560'
+    },
+    performance: [
+      {
+        game: 'Cyberpunk 2077',
+        fps: '60',
+        settings: 'High',
+        resolution: '1080p'
+      },
+      {
+        game: 'Red Dead Redemption 2',
+        fps: '65',
+        settings: 'High',
+        resolution: '1080p'
+      },
+      {
+        game: 'Elden Ring',
+        fps: '70',
+        settings: 'High',
+        resolution: '1080p'
+      }
+    ]
+  },
+  'rtx-3050-basic': {
+    title: 'RTX 3050 Basic',
+    price: 1999,
+    oldPrice: 2199,
     specs: {
       cpu: 'Intel Core i3-13100F',
       gpu: 'NVIDIA GeForce RTX 3050 4GB',
@@ -84,8 +154,8 @@ export const configs = {
   },
   'rtx-3060-basic': {
     title: 'RTX 3060 Basic',
-    price: 3499,
-    oldPrice: 2699,
+    price: 2599,
+    oldPrice: 3499,
     specs: {
       cpu: 'Intel Core i3-13100F',
       gpu: 'NVIDIA GeForce RTX 3060 12GB',
@@ -119,8 +189,8 @@ export const configs = {
   },
   'rtx-4060-starter': {
     title: 'RTX 4060 Starter',
-    price: 5199,
-    oldPrice: 3299,
+    price: 3299,
+    oldPrice: 5199,
     specs: {
       cpu: 'Intel Core i5-13400F',
       gpu: 'NVIDIA GeForce RTX 4060 8GB',
@@ -366,6 +436,32 @@ export const configs = {
 
 export const fullSpecs = {
   ...configs,
+  'rx-6600-basic': {
+    ...configs['rx-6600-basic'],
+    specs: {
+      cpu: 'AMD Ryzen 5 5600 (6 ядер, 4.4 GHz)',
+      gpu: 'AMD Radeon RX 6600 8GB GDDR6',
+      ram: '16GB (2x8GB) DDR4-3200 CL16',
+      storage: '512GB Samsung 970 EVO Plus NVMe SSD',
+      motherboard: 'MSI B550M PRO-VDH WIFI',
+      cooling: 'DeepCool AK400 (1x120mm вентилятор)',
+      psu: 'Corsair CV550 550W Bronze',
+      case: 'DeepCool CC560 (4x120mm вентилятора)'
+    }
+  },
+  'rtx-2060-basic': {
+    ...configs['rtx-2060-basic'],
+    specs: {
+      cpu: 'Intel Core i3-12100F (4 ядра, 4.3 GHz)',
+      gpu: 'NVIDIA GeForce RTX 2060 6GB GDDR6',
+      ram: '16GB (2x8GB) DDR4-3200 CL16',
+      storage: '512GB Samsung 970 EVO Plus NVMe SSD',
+      motherboard: 'MSI B660M PRO-A',
+      cooling: 'DeepCool AK400 (1x120mm вентилятор)',
+      psu: 'Corsair CV550 550W Bronze',
+      case: 'DeepCool CC560 (4x120mm вентилятора)'
+    }
+  },
   'rtx-3060-basic': {
     ...configs['rtx-3060-basic'],
     specs: {
