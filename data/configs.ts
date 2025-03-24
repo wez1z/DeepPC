@@ -566,4 +566,11 @@ export const fullSpecs = {
       case: 'MSI MAG FORGE 100R (4x120mm вентилятора)'
     }
   }
+};
+
+export const contacts = {
+  email: 'infodeeppc1@gmail.com',
+  phone: '+375 29 123-45-67',
+  address: 'г. Минск, ул. Примерная, 123',
+  workingHours: 'Пн-Пт: 10:00 - 19:00'
 }; 
