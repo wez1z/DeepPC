@@ -60,9 +60,14 @@ export default function Home() {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isSpecsModalOpen, setIsSpecsModalOpen] = useState(false);
   const [currentConfig, setCurrentConfig] = useState('');
-  const [priceRange, setPriceRange] = useState(40000);
+  const [priceRange, setPriceRange] = useState(5000);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [selectedConfig, setSelectedConfig] = useState<string | null>(null);
+
+  useEffect(() => {
+    console.log('Current email:', contacts.email);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
