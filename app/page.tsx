@@ -17,7 +17,7 @@ import {
   faHeadset,
   faBars
 } from '@fortawesome/free-solid-svg-icons';
-import { configs, fullSpecs } from '../data/configs';
+import { configs, fullSpecs, contacts } from '../data/configs';
 import type { ComponentSpecs, MotherboardSpecs, CoolingSpecs, CaseSpecs, PSUSpecs } from '../data/configs';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -308,8 +308,8 @@ export default function Home() {
                 <p className="flex items-center gap-2">
                   <FontAwesomeIcon icon={faServer} className="text-[#00ff00]" />
                   <span><strong>Email: </strong>
-                    <a href="mailto:infodeeppc@gmail.com" className="hover:text-[#00ff00] transition-colors">
-                      infodeeppc@gmail.com
+                    <a href={`mailto:${contacts.email}`} className="hover:text-[#00ff00] transition-colors">
+                      {contacts.email}
                     </a>
                   </span>
                 </p>
