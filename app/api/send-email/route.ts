@@ -4,7 +4,7 @@ import { contacts } from '../../../data/configs';
 
 export async function POST(request: Request) {
   try {
-    const { name, phone, email, address, config } = await request.json();
+    const { name, phone, email, address, config, components, totalPrice } = await request.json();
 
     // Создаем транспорт для отправки email
     const transporter = nodemailer.createTransport({
@@ -24,14 +24,23 @@ export async function POST(request: Request) {
 Email: ${email}
 Адрес: ${address}
 
-Конфигурация:
-${config}
+Конфигурация: ${config}
+
+Компоненты:
+Процессор: ${components.cpu}
+Видеокарта: ${components.gpu}
+Материнская плата: ${components.motherboard}
+Оперативная память: ${components.ram}
+Корпус: ${components.case}
+Блок питания: ${components.psu}
+
+Итоговая стоимость: ${totalPrice} BYN
     `;
 
     // Отправляем email
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: contacts.email,
+      to: process.env.EMAIL_USER,
       subject: 'Новый заказ на сайте DeepPC',
       text: mailText,
       html: mailText.replace(/\n/g, '<br>')

@@ -260,16 +260,22 @@ export default function Home() {
                       <span><strong>Storage:</strong> {config.specs.storage}</span>
                     </p>
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 mt-4">
                     <button
-                      onClick={() => handleSpecsClick(key)}
-                      className="flex-1 px-4 py-3 bg-black border border-[#00ff00] text-[#00ff00] rounded-lg hover:bg-[#00ff00]/10 transition-all"
+                      className="flex-1 py-2 px-4 bg-transparent border border-[#00ff00] text-[#00ff00] rounded hover:bg-[#00ff00] hover:text-black transition-all shadow-[0_0_10px_rgba(0,255,0,0.3)] hover:shadow-[0_0_15px_rgba(0,255,0,0.5)]"
+                      onClick={() => {
+                        const event = new CustomEvent('showSpecs', { detail: key });
+                        document.dispatchEvent(event);
+                      }}
                     >
                       Характеристики
                     </button>
                     <button
-                      onClick={() => handleOrderClick(key)}
-                      className="flex-1 px-4 py-3 bg-[#00ff00] text-black rounded-lg hover:bg-[#00ff00]/90 transition-all font-bold"
+                      className="flex-1 py-2 px-4 bg-[#00ff00] text-black rounded hover:bg-[#00cc00] transition-all shadow-[0_0_10px_rgba(0,255,0,0.3)] hover:shadow-[0_0_15px_rgba(0,255,0,0.5)]"
+                      onClick={() => {
+                        const event = new CustomEvent('orderConfig', { detail: key });
+                        document.dispatchEvent(event);
+                      }}
                     >
                       Заказать
                     </button>
